@@ -44,11 +44,11 @@ for col in title:
     sys.stdout.flush()
     time.sleep(0.0025)
 
-description = "\n The tool uses advanced searching operators in the Goggle search engine " \
-              "to find specfic words or phrases which helps in finding any vulnerable web applications. " \
+description = "\n The tool uses advanced searching operators in the Google search engine " \
+              "to find specific words or phrases which helps in finding any vulnerable web applications. " \
               "It simplifies Google Dorking commands for the user and provides straightforward anaylsis of the " \
               "information. Different information such as contact information, login credentials, files on " \
-              "a website, open ports, vulnerability of a specific website, and many more juicy stuff can " \
+              "a website, open ports, vulnerability of a specific website, and many more vulnerable information can " \
               "be found online through google dorking. This tool allows you to be able to access that information " \
               "wihout knowing any google dorking commands or strings.  \n"
 
@@ -58,7 +58,7 @@ for col in description:
     time.sleep(0.01)
 
 disclaimer = " \n This is for educational purposes and user should use it at their own risk. Some of" \
-             " the analysis might not be precise and CAUTION is advised when opening the links found " \
+             " the analysis might not be precise due to constant changing of websites and CAUTION is advised when opening the links found " \
              "through the results. \n\n "
 
 for col in disclaimer:
@@ -66,7 +66,7 @@ for col in disclaimer:
     sys.stdout.flush()
     time.sleep(0.01)
 
-print("\033[1;32;40mHave fun hacking *Hacker music in background*\n\n")
+print("\033[1;32;40mChoose from 1-8 for specific information or choose 9 for comprehensive search .\n")
 
 
 # functions:
