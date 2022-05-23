@@ -1,8 +1,8 @@
 from googlesearch import search
 import webbrowser
 import time
+import os
 import sys
-
 
 # uses console or default browser to display results.
 
@@ -42,7 +42,7 @@ title = ("""
 for col in title:
     print(colors.blue + col, end="")
     sys.stdout.flush()
-    time.sleep(0.0025)
+    time.sleep(0.0005)
 
 description = "\n The tool uses advanced searching operators in the Google search engine " \
               "to find specific words or phrases which helps in finding any vulnerable web applications. " \
@@ -54,8 +54,7 @@ description = "\n The tool uses advanced searching operators in the Google searc
 
 for col in description:
     print(colors.magneta + col, end="")
-    sys.stdout.flush()
-    time.sleep(0.01)
+
 
 disclaimer = " \n This is for educational purposes and user should use it at their own risk. Some of" \
              " the analysis might not be precise due to constant changing of websites and CAUTION is advised when opening the links found " \
@@ -63,10 +62,10 @@ disclaimer = " \n This is for educational purposes and user should use it at the
 
 for col in disclaimer:
     print(colors.red + col, end="")
-    sys.stdout.flush()
-    time.sleep(0.01)
 
-print("\033[1;32;40mChoose from 1-8 for specific information or choose 9 for comprehensive search .\n")
+print(
+    "\033[1;32;40mChoose from 1-8 for specific information or choose 9 for comprehensive search ."
+)
 
 
 # functions:
@@ -83,6 +82,10 @@ def searchContactInfo(site):  # search contact information
             break
         data = (counter, results)
         time.sleep(0.1)
+
+    if request == 0:
+        print(
+            "\nnothing found. Please check if you entered a valid website.\n")
 
 
 def ComprehensiveContactInfo(site):
@@ -102,13 +105,18 @@ def ComprehensiveContactInfo(site):
         data = (counter, results)
         time.sleep(0.1)
 
+    if request == 0:
+        print(
+            "\nnothing found. Please check if you entered a valid website.\n")
+
 
 def ComprehensiveunsecureDomainsofSites(site):
     request = 0
     counter = 0
     file.write("\n\nHttp domains associated with site: " + site + "\n")
     file.write("_____________________________________________________\n")
-    for results in search("site:" + site + " " "inurl:http"):  # still working on it
+    for results in search("site:" + site + " "
+                          "inurl:http"):  # still working on it
         counter1 = counter + 1
         file.write(results + "\n")
         time.sleep(0.1)
@@ -117,6 +125,10 @@ def ComprehensiveunsecureDomainsofSites(site):
             break
         data = (counter1, results)
         time.sleep(0.1)
+
+    if request == 0:
+        print(
+            "\nnothing found. Please check if you entered a valid website.\n")
 
 
 def ComprehensiveShodanAdvancedSearch(site):
@@ -128,15 +140,17 @@ def ComprehensiveShodanAdvancedSearch(site):
 def ComprehensivelookUpOpenPorts(site):
     file.write("\n\nOpen ports associated with site: " + site + "\n")
     file.write("_____________________________________________________\n")
-    file.write("https://www.shodan.io/search/facet?query=" +
-               site + "&facet=port")
+    file.write("https://www.shodan.io/search/facet?query=" + site +
+               "&facet=port")
 
 
 def ComprehensivelookUpBugBountyDB(site):
-    file.write("\n\nBugBounty information associated with site: " + site + "\n")
-    file.write("_____________________________________________________________\n")
-    file.write("https://www.openbugbounty.org//search/?search=" +
-               site + "&type=host")
+    file.write("\n\nBugBounty information associated with site: " + site +
+               "\n")
+    file.write(
+        "_____________________________________________________________\n")
+    file.write("https://www.openbugbounty.org//search/?search=" + site +
+               "&type=host")
 
 
 def searchFilesOnSite(site, fileType):  # search files on site
@@ -144,7 +158,8 @@ def searchFilesOnSite(site, fileType):  # search files on site
     request = 0
 
     print("searching  . . . .", end=" ")
-    for results in search("https://google.com/search?q=" + site + " " + dorkFileCommand + fileType):
+    for results in search("https://google.com/search?q=" + site + " " +
+                          dorkFileCommand + fileType):
         counter = counter + 1
 
         print(counter, results)  # display results in the console
@@ -169,7 +184,8 @@ def searchDomain(site, userSpecific):  # search domains for titles
         print('. . . ', end=" ")
         time.sleep(2)
 
-    webbrowser.open_new("https://google.com/search?q=" + dorkSiteCommand + site + " " + dorkDomainCommand +
+    webbrowser.open_new("https://google.com/search?q=" + dorkSiteCommand +
+                        site + " " + dorkDomainCommand +
                         userSpecific)  # display results in a browser tab
 
 
@@ -177,7 +193,8 @@ def unsecureDomainsofSites(site):  # search http Domains of specific sites
     request = 0
     counter = 0
 
-    for results in search("site:" + site + " " "inurl:http"):  # still working on it
+    for results in search("site:" + site + " "
+                          "inurl:http"):  # still working on it
         counter = counter + 1
         # and should be displayed via browser if it works
         print("[+] ", counter, results)
@@ -187,6 +204,10 @@ def unsecureDomainsofSites(site):  # search http Domains of specific sites
             break
         data = (counter, results)
         time.sleep(0.1)
+
+    if request == 0:
+        print(
+            "\nnothing found. Please check if you entered a valid website.\n")
 
 
 def lookUpAssociateDomains(site):
@@ -200,8 +221,8 @@ def lookUpAssociateDomains(site):
         print('. . . ', end=" ")
         time.sleep(2)
 
-    webbrowser.open_new(
-        "https://google.com/search?q=" + "site:" + "*.*." + splitSite[0])  # display results in a browser tab
+    webbrowser.open_new("https://google.com/search?q=" + "site:" + "*.*." +
+                        splitSite[0])  # display results in a browser tab
 
 
 def shodanAdvancedSearch(site):
@@ -220,8 +241,8 @@ def lookUpOpenPorts(site):
         print('. . . ', end=" ")
         time.sleep(2)
 
-    webbrowser.open_new("https://www.shodan.io/search/facet?query=" +
-                        site + "&facet=port")  # display results in a
+    webbrowser.open_new("https://www.shodan.io/search/facet?query=" + site +
+                        "&facet=port")  # display results in a
     # browser tab
 
 
@@ -238,6 +259,7 @@ def lookUpBugBountyDB(site):
 
 # menu
 def menu():
+    print("\n")
     print("1. Search for files on site")
     print("2. Search websites under a domain with a specific word")
     print("3. Search for contact information")
@@ -261,53 +283,89 @@ menu()
 print("\n")
 
 # taking user input
-userInput = int(input("Choose an option: "))
+while True:
+    try:
+        userInput = int(input("Choose an option: "))
+        if userInput not in (0, 1, 2, 3, 4, 5, 6, 7, 8, 9):
+            raise ValueError
+        break
+    except ValueError:
+        print(
+            "\033[1;31;40m\nSorry, that is not one of the options. Please try again or enter '0' to exit.\033[1;32;40m\n"
+        )
 
 if userInput == 1:  # search  files on site
     site = input("Enter the site: ")  # site to search
     fileType = input("Enter files you want to search: ")  # files to search
     searchFilesOnSite(site, fileType)
+    menu()
+    userInput = int(input("Choose another option or enter 0 to quit: "))
 
 # webbrowser.open_new("https://google.com/search?q=" + dorkSiteCommand + site + " " + dorkFileCommand + fileType)
 # uncomment and reformat for it to open up in a new browser tab....
 
-if userInput == 2:  # search domains for titles
+elif userInput == 2:  # search domains for titles
     site = input("Enter the site: ")
     userSpecific = input("Specific word or words you want to search: ")
     userSpecific = userSpecific.replace(" ", "+")
     searchDomain(site, userSpecific)
+    menu()
+    userInput = int(input("Choose another option or enter 0 to quit: "))
 
-if userInput == 3:  # search contact information on sites
+elif userInput == 3:  # search contact information on sites
     site = input("Enter the site: ")
     searchContactInfo(site)
+    menu()
+    userInput = int(input("Choose another option or enter 0 to quit: "))
 
-if userInput == 4:  # search http Domains of specific country domains
+elif userInput == 4:  # search http Domains of specific country domains
     site = input("Enter the site: ")
     unsecureDomainsofSites(site)
+    menu()
+    userInput = int(input("Choose another option or enter 0 to quit: "))
 
-if userInput == 5:  # look up domains associated domains
+elif userInput == 5:  # look up domains associated domains
     site = input("Enter the site: ")
     lookUpAssociateDomains(site)
+    menu()
+    userInput = int(input("Choose another option or enter 0 to quit: "))
 
-if userInput == 6:  # Shodan advanced search
+elif userInput == 6:  # Shodan advanced search
     site = input("Enter the site: ")
     shodanAdvancedSearch(site)
+    menu()
+    userInput = int(input("Choose another option or enter 0 to quit: "))
 
-if userInput == 7:  # lookup open ports on sites via shodan
+elif userInput == 7:  # lookup open ports on sites via shodan
     site = input("Enter the site: ")
     lookUpOpenPorts(site)
+    menu()
+    userInput = int(input("Choose another option or enter 0 to quit: "))
 
-if userInput == 7:  # look up BugBounty database
+elif userInput == 8:  # look up BugBounty database
     site = input("Enter the site: ")
     lookUpBugBountyDB(site)
+    menu()
+    userInput = int(input("Choose another option or enter 0 to quit: "))
 
-if userInput == 9:  # comprehensive search
-    print("Comprehensive Search includes: contact info, http protocol,"
-          + "site associated domains, shodan advanced websearch, open ports," +
+elif userInput == 9:  # comprehensive search
+    print("Comprehensive Search includes: contact info, http protocol," +
+          "site associated domains, shodan advanced websearch, open ports," +
           "and BugBounty database\n")
 
     site = input("Enter the site: ")
-    file = open("Comprehensive Search.txt", "w")
+    userFile = input("Enter a name for your file: ")
+    userFile = userFile + ".txt"
+
+    check = os.path.exists(userFile)
+
+    if check:
+        print(
+            "Directory contains same file name. Consider a different name. \n")
+        userFile = input("Enter a different name for your file: ")
+        userFile = userFile + ".txt"
+
+    file = open(userFile, "w")
 
     print("Working . . . . ", end=" ")
     for i in range(1, 5):
@@ -319,6 +377,8 @@ if userInput == 9:  # comprehensive search
     ComprehensiveShodanAdvancedSearch(site)
     ComprehensivelookUpOpenPorts(site)
     ComprehensiveunsecureDomainsofSites(site)
-
-    print("\nDone. . . . . .")
     file.close()
+    print("\nDone. . . . . .")
+
+elif userInput == 0:
+    print("\nClosing Program. . . . . .")
