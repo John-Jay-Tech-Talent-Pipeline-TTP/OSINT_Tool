@@ -1,7 +1,7 @@
 # OSINTDorks Website Vulnerability Tool
-
+[Link to Project Website](https://OSINTSite.jjay-counselor.repl.co)
 ## Click on Image Below to view Demo of OSINTDorks Tool
-[![demo image](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=vxu4U1gMowo)
+[![demo image](https://github.com/John-Jay-Tech-Talent-Pipeline-TTP/OSINT_Tool/blob/main/video-pic.jpg)](https://www.youtube.com/watch?v=vxu4U1gMowo)
 
 
 
