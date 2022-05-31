@@ -15,11 +15,11 @@
 ### Python IDE 
 - Any python IDE preferably with the latest python version installed. 
 
-### Libraries
+### Python Libraries
 - Libraries include googlesearch, webbrowser, time, os, sys.
-- To install a python library type in pip install library name in the command prompt.
-  - pip install googlesearch
-  - pip install webbrowser
+- To install a python library type in ```pip install [library name]``` in the command prompt.
+  - ```pip install googlesearch```
+  - ```pip install webbrowser```
 
 ### Internet Connection
 - Broadband or Wi-Fi Internet connection
